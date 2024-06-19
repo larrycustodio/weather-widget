@@ -1,0 +1,43 @@
+.data-location {
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.results-location-icon {
+  width: 20px;
+  height: 20px;
+  line-height: 32px;
+}
+.icon {
+  transition: all 100ms ease-in;
+}
+.icon.dark {
+  filter: invert(1);
+}
+
+.results-temp {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+.results-condition {
+  margin: 0;
+  color: #767676;
+}
+.results-condition.dark {
+  color: #a2a2a2;
+}
+
+.results-wind {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.results-wind-icon {
+  height: 16px;
+}
