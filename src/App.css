@@ -4,6 +4,13 @@
   background-color: #ffffff;
   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   padding: 24px;
+  position: relative;
+}
+
+.theme-slider-container {
+  position: absolute;
+  top: -32px;
+  right: 0;
 }
 
 .sr-only {
