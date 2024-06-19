@@ -18,9 +18,22 @@ describe("App", () => {
     render(<App />);
   };
 
+  const setupRejectedRequest = (
+    errorMessage = "An error occurred",
+    status = 500
+  ) => {
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve({ message: errorMessage }),
+        ok: false,
+        status,
+      } as Response)
+    );
+    render(<App />);
+  };
+
   it("renders the location and weather information", async () => {
     setupFulfilledRequest();
-    screen.logTestingPlaygroundURL();
     userEvent.type(
       screen.getByRole("textbox", { name: "Location" }),
       "London, UK"
@@ -41,10 +54,37 @@ describe("App", () => {
     );
 
     expect(conditionsDisplay).toBeVisible();
-    screen.logTestingPlaygroundURL();
     const windDisplay = screen.getByText(
       `${mockData.current.wind_mph} mph ${mockData.current.wind_dir}`
     );
     expect(windDisplay).toBeVisible();
+  });
+
+  it("renders an error message to notfy user of an unavailable service", async () => {
+    setupRejectedRequest("Server Error", 500);
+    userEvent.type(
+      screen.getByRole("textbox", { name: "Location" }),
+      "London, UK"
+    );
+    userEvent.click(screen.getByRole("button", { name: "Get Weather" }));
+    await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
+    expect(
+      screen.getByText(
+        "The weather API is currently not available, please try again later",
+        { exact: false }
+      )
+    ).toBeVisible();
+  });
+
+  it("renders an error message to notfy user of an failed request", async () => {
+    const testErrorMessage = "You are not subscribed to this API";
+    setupRejectedRequest(testErrorMessage, 400);
+    userEvent.type(
+      screen.getByRole("textbox", { name: "Location" }),
+      "London, UK"
+    );
+    userEvent.click(screen.getByRole("button", { name: "Get Weather" }));
+    await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
+    expect(screen.getByText(testErrorMessage, { exact: false })).toBeVisible();
   });
 });

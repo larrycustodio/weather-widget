@@ -5,10 +5,12 @@ import { LoadState, WeatherData } from "../types";
 const useGetWeather = () => {
   const [data, setData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<LoadState>("idle");
+  const [error, setError] = useState<string | null>(null);
 
   const getWeather = async (location: string) => {
     if (!location) return;
     setLoading("pending");
+    setError(null);
     setData(null);
 
     try {
@@ -24,6 +26,11 @@ const useGetWeather = () => {
       );
       const data = await response.json();
       if (!response.ok) {
+        if (response.status >= 500) {
+          throw Error(
+            "The Weather API is currently not available, please try again later."
+          );
+        }
         throw Error(data.message);
       }
       setData({
@@ -51,12 +58,18 @@ const useGetWeather = () => {
       });
       setLoading("fulfilled");
     } catch (error: unknown) {
-      console.error("Error fetching weather data:", error);
+      if (error instanceof Error) {
+        console.error("Error fetching weather data:", error);
+        setError(error.message);
+      } else {
+        console.error("Error fetching weather data:", error);
+        setError("An unknown error occurred");
+      }
       setLoading("error");
     }
   };
 
-  return { data, loading, getWeather };
+  return { data, loading, error, getWeather };
 };
 
 export default useGetWeather;

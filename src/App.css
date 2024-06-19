@@ -66,6 +66,10 @@
   animation: spin 2s linear infinite;
 }
 
+.error {
+  color: #ae2020;
+}
+
 .data-location {
   font-weight: 600;
   font-size: 20px;

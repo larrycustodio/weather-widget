@@ -8,7 +8,7 @@ import arrowUp from "./icons/arrow-up.svg";
 
 function App() {
   const [location, setLocation] = useState("");
-  const { data, loading, getWeather } = useGetWeather();
+  const { data, loading, error, getWeather } = useGetWeather();
 
   const submitLocation = (e: FormEvent) => {
     e.preventDefault();
@@ -57,7 +57,11 @@ function App() {
       </form>
 
       {loading === "pending" && <p>Loading...</p>}
-      {loading === "error" && <p>Error!</p>}
+      {loading === "error" && (
+        <p className="error">
+          <strong>Error:</strong> {error}
+        </p>
+      )}
 
       {loading === "fulfilled" && (
         <section>
