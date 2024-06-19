@@ -6,6 +6,7 @@ import {
 import App from "./App";
 import { mockData } from "./helpers/mockapi";
 import userEvent from "@testing-library/user-event";
+import { ThemeProvider } from "./ThemeContext";
 
 describe("App", () => {
   const setupFulfilledRequest = () => {
@@ -15,21 +16,29 @@ describe("App", () => {
         ok: true,
       } as Response)
     );
-    render(<App />);
+    render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
   };
 
   const setupRejectedRequest = (
-    errorMessage = "An error occurred",
+    message = "An error occurred",
     status = 500
   ) => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
-        json: () => Promise.resolve({ message: errorMessage }),
+        json: () => Promise.resolve({ error: { code: 1006, message } }),
         ok: false,
         status,
       } as Response)
     );
-    render(<App />);
+    render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
   };
 
   it("renders the location and weather information", async () => {

@@ -31,7 +31,7 @@ const useGetWeather = () => {
             "The Weather API is currently not available, please try again later."
           );
         }
-        throw Error(data.message);
+        throw Error(data.error.message);
       }
       setData({
         location: {
