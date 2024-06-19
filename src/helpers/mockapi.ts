@@ -19,7 +19,6 @@ export const mockData: WeatherData = {
     condition: {
       text: "Partly cloudy",
       icon: "//cdn.weatherapi.com/weather/64x64/day/116.png",
-      code: 1003,
     },
     wind_mph: 11.9,
     wind_kph: 19.1,

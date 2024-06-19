@@ -10,7 +10,6 @@ type WeatherLocation = {
 type WeatherCondition = {
   text: string;
   icon: string; // URL
-  code: number;
 };
 
 type WeatherCurrent = {

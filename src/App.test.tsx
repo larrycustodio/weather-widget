@@ -20,7 +20,7 @@ describe("App", () => {
 
   it("renders the location and weather information", async () => {
     setupFulfilledRequest();
-
+    screen.logTestingPlaygroundURL();
     userEvent.type(
       screen.getByRole("textbox", { name: "Location" }),
       "London, UK"
