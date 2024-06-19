@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Weather Widget 🌞
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This README covers instructions for setting up the environment, running tests, and starting the app locally.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Please ensure the following are installed on your machine:
 
-### `npm start`
+- [Node.js](https://nodejs.org/) (version 20.x or higher recommended)
+- [Yarn](https://yarnpkg.com/) (version 1.x or higher)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Clone the Repository**
 
-### `npm test`
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install Dependencies**
 
-### `npm run build`
+   Use Yarn to install the necessary packages:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   yarn install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Set Environment Variables**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   The app requires the `ABC` environment variable to function correctly. Create a `.env` file in the root directory of the project and add the following:
 
-### `npm run eject`
+   ```bash
+   REACT_APP_RAPID_API_KEY=<SECRET_KEY_HERE>
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To verify the app's behavior, run the tests using:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+yarn test
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img width="650" alt="image" src="https://github.com/larrycustodio/weather-widget/assets/13429481/b9a618ba-98c8-4ded-bba9-da978796f4d0">
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Running the App Locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To start the application locally, run:
+
+```bash
+yarn start
+```
+
+The app will launch on [http://localhost:3000](http://localhost:3000). You can access it via your web browser.
+
+## Preview of the App
+
+The preview of the widget!
+
+https://github.com/larrycustodio/weather-widget/assets/13429481/7f34f316-3e10-4f47-b133-ccfc31045308
