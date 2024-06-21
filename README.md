@@ -28,7 +28,7 @@ Please ensure the following are installed on your machine:
 
 3. **Set Environment Variables**
 
-   The app requires the `ABC` environment variable to function correctly. Create a `.env` file in the root directory of the project and add the following:
+   The app requires the `REACT_APP_RAPID_API_KEY` environment variable to function correctly. Create a `.env` file in the root directory of the project and add the following:
 
    ```bash
    REACT_APP_RAPID_API_KEY=<SECRET_KEY_HERE>
